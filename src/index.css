@@ -1,0 +1,182 @@
+*,*::before,*::after{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center; 
+  text-align: center;
+  background-color: #242730;
+  color: #fff;
+}
+/***************** button ***********************/
+
+button{
+  cursor: pointer;
+}
+
+/*------------------   heading  -----------------------*/
+
+h1{
+  margin-bottom: 2rem;
+}
+
+/*--------------------    Row    -----------------------*/
+.row,.text{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+/*--------------------    Ceil    -----------------------*/
+.ceil{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  border: 4px solid cyan;
+  background: inherit;
+  background: #000;
+  overflow: hidden;
+}
+
+.row:first-child .ceil{
+  border-top: 0;
+}
+.row:last-child .ceil{
+  border-bottom: 0;
+}
+.ceil:first-of-type{
+  border-left: 0;
+}
+.ceil:last-of-type{
+  border-right: 0;
+}
+
+.winner-ceil{
+  animation: victory-cl .2s linear infinite;
+}
+
+.loser-ceil::before{
+  content: '';
+  height: 150%;
+  width:4px;
+  position: absolute;
+  top: -24px;
+  right: 43px;
+  transform:rotateZ(-45deg)scale3d(1,0,1);
+  background:red;
+  animation: 1.5s linear 1s forwards loser-cl-before;
+}
+
+.loser-ceil::after{
+  content: '';
+  height: 150%;
+  width:4px;
+  position: absolute;
+  bottom: -24px;
+  left: 43px;
+  transform:rotateZ(45deg)scale3d(1,0,1);
+  background:red;
+  animation: 1s linear 2.5s forwards loser-cl-after;
+}
+
+/* ---------------------------- text ------------------------------*/
+
+.text{
+  height: 100px;
+  width: 90%;
+  max-width: 340px;
+  margin: 2rem auto 1rem;
+  font-size: 1.5rem;
+  border: 10px dotted blueviolet;
+}
+
+.text.win-animation{
+  animation: victory-br .6s linear infinite;
+}
+
+.text span{
+  transition: transform 3s ease-in-out , color 3s ease-in-out ;
+}
+
+.text.win-animation span{
+  color: cyan;
+  transform: scale3d(1.3,1.3,1.3);
+}
+
+/* ---------------------------- text ------------------------------*/
+
+.restart{
+  height:50px;
+  width: 90%;
+  max-width: 340px;
+  background: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  background-color:blueviolet;
+}
+
+.restart.win-animation{
+  animation: victory-bg .1s linear infinite;
+}
+
+/* ---------------------------- animation ----------------------------*/
+
+@keyframes victory-br {
+  form {
+    border: 10px dotted blueviolet;
+  }
+  to {
+    border: 10px dotted red;
+  }
+}
+
+@keyframes victory-bg {
+  form {
+    background-color: blueviolet;
+  }
+  to {
+    background-color: red;
+  }
+}
+
+@keyframes victory-cl {
+  form {
+    color: #fff;
+  }
+  to {
+    color: #00d900;
+  }
+}
+
+@keyframes loser-cl-before {
+  form {
+    transform:rotateZ(-45deg)scale3d(1,0,1);
+  }
+  to {
+    transform:rotateZ(-45deg)scale3d(1,1,1);
+  }
+}
+
+@keyframes loser-cl-after {
+  form {
+    transform:rotateZ(45deg)scale3d(1,0,1);
+  }
+  to {
+    transform:rotateZ(45deg)scale3d(1,1,1);
+  }
+}
